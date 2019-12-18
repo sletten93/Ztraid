@@ -59,12 +59,12 @@ class ZtrUser(models.Model):
 
 class UserPref(models.Model):
 
-    # TODO on_delete=models.CASCADE <-- passande?
-    user_id = models.OneToOneField(ZtrUser)
-    net_speed = models.IntegerField(max_length=10)
+    # TODO on_delete=models.CASCADE <-- passande??
+    user_ID = models.OneToOneField(ZtrUser, on_delete=models.CASCADE)
+    net_speed = models.IntegerField()
 
     def __str__(self):
-        return self.user_id
+        return self.user_ID
 
 
 class FAQ(models.Model):
