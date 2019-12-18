@@ -37,6 +37,7 @@ REST_FRAMEWORK = {
 # Application definition
 
 INSTALLED_APPS = [
+    'testApp',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
