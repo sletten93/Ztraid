@@ -64,6 +64,9 @@ class ZtrUser(models.Model):
     def __str__(self):
         return "{} {}".format(self.name, self.nickname)
 
+    def get_role(self):
+        return self.role
+
 
 class UserPref(models.Model):
 
