@@ -37,7 +37,7 @@ REST_FRAMEWORK = {
 # Application definition
 
 INSTALLED_APPS = [
-    'testApp',
+    'Ztraid.testApp',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
