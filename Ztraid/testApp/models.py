@@ -6,13 +6,13 @@ Django-modeller baserade på det första sambandsdiagrammet.
 
 - Alla primärnycklar tillåts i nuläget skapas av Django och ser ut som nedandför:
     "id" serial NOT NULL PRIMARY KEY 
-    stycket ovanför är skrivet i PostgreSQL syntax, aktuell syntax beror på vald databastyp i settings.py)
+    stycket ovanför är skrivet i PostgreSQL syntax, aktuell syntax beror på vald databastyp i settings.py
 
 - Kopplingstabeller är implementerade m.h.a models.ManyToManyField
 
 """
 
-# TODO - max_length bör dubbelkollas
+# TODO - max_length bör dubbelkollas (för alla tabeller)
 # TODO - namn-konventioner bör enas om, min IDE har fått diktera tills vidare
 
 
@@ -44,12 +44,12 @@ class ZtrUser(models.Model):
 
     name = models.CharField(max_length=20)
     email = models.EmailField(max_length=254)
+    # TODO - Dokumentera tydligt vilka siffror som representerar vilka roller, eller byt till VarChar/CharField
     role = models.CharField(max_length=1)
     nickname = models.CharField(max_length=20)
     phone = models.CharField(max_length=20)
     salt = models.CharField(max_length=25)
     password = models.CharField(max_length=20)
-    # TODO - önskad implementation av kopplingstabell?
     user_products = models.ManyToManyField(Product)
     user_devices = models.ManyToManyField(Devices)
 
