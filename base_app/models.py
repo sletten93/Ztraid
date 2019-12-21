@@ -12,9 +12,10 @@ Django-modeller baserade på det första sambandsdiagrammet.
 
 """
 
+# TODO - låt ZtrUser ärva AbstractUser och ersätt AUTH_USER_MODEL med ZtrUser i settings.py
 # TODO - max_length bör dubbelkollas (för alla tabeller)
 # TODO - namn-konventioner bör enas om, min IDE har fått diktera tills vidare
-# TODO - alla tabeller har fått ett fält som lagrar datum&tid för nya entries ("created")
+# TODO - alla tabeller har nu fält som lagrar datum&tid för nya entries ("created"), önskas eller ej?
 
 
 class Product(models.Model):

@@ -13,7 +13,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 class DevicesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Devices
-        fields = ['url', 'id', 'name', 'OS', 'GPU', 'CPU', 'cam', 'mic', 'created']
+        fields = '__all__'
 
 
 class ZtrUserSerializer(serializers.HyperlinkedModelSerializer):
