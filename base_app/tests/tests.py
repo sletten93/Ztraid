@@ -33,9 +33,9 @@ class BaseAppTestCase(APITestCase):
         self.uriUsers = '/Users/'
         self.uriProducts = '/Products/'
         self.uriDevices = '/Devices/'
-        self.uriUserPref = '/UserPref/'
+        self.uriUserPref = '/UserPrefs/'
         self.uriFAQ = '/FAQ/'
-        self.uriParagraph = '/Paragraph/'
+        self.uriParagraph = '/Paragraphs/'
 
         self.username1 = 'AdamUnitTest1'
         self.email1 = 'AdamUT1@unit.test'
@@ -98,4 +98,72 @@ class BaseAppTestCase(APITestCase):
                          'Expected Response Code 201, received {0} instead.'
                          .format(response.status_code))
 
-        # testa FKs för ZtrUser
+        # TODO testa FKs för ZtrUser
+
+    def testDevices(self):
+        request = self.factory.get(self.uriDevices)
+        response = self.viewDevices(request)
+        self.assertEqual(response.status_code, 200,
+                         'Expected Response Code 200, received {0} instead.'
+                         .format(response.status_code))
+        params = {
+            "name": "PostDevice1",
+            "OS": "Windows",
+            "CPU": "Intel I15 SUPERMAX",
+            "GPU": "GTX3070",
+            "cam": "Some kind of camera.",
+            "mic": "A mic."
+        }
+        response = self.client.post(self.uriDevices, params)
+        self.assertEqual(response.status_code, 201,
+                         'Expected Response Code 201, received {0} instead.'
+                         .format(response.status_code))
+
+        # TODO testa FKs för ZtrUser
+
+    def testUserPref(self):
+        request = self.factory.get(self.uriUserPref)
+        response = self.viewUserPref(request)
+        self.assertEqual(response.status_code, 200,
+                         'Expected Response Code 200, received {0} instead.'
+                         .format(response.status_code))
+        # TODO ändra om model-kod för user_ID, knyt user_ID till just "ID" hos ZtrUser
+        params = {
+            "user_ID": '1',
+            "net_speed": 100
+        }
+        response = self.client.post(self.uriUserPref, params)
+        # Efter model-kod är korrekt, ändra tillbaka till assertEqual
+        self.assertNotEqual(response.status_code, 201,
+                            'Expected Response Code 201, received {0} instead.'
+                            .format(response.status_code))
+
+    def testFAQ(self):
+        request = self.factory.get(self.uriFAQ)
+        response = self.viewFAQ(request)
+        self.assertEqual(response.status_code, 200,
+                         'Expected Response Code 200, received {0} instead.'
+                         .format(response.status_code))
+        params = {
+            "question": "UnitTestQuestion1?",
+            "answer": "UnitTestAnswer1!",
+            "example": "UnitTestExample1?!"
+        }
+        response = self.client.post(self.uriFAQ, params)
+        self.assertEqual(response.status_code, 201,
+                         'Expected Response Code 201, received {0} instead.'
+                         .format(response.status_code))
+
+    def testParagraph(self):
+        request = self.factory.get(self.uriParagraph)
+        response = self.viewParagraph(request)
+        self.assertEqual(response.status_code, 200,
+                         'Expected Response Code 200, received {0} instead.'
+                         .format(response.status_code))
+        params = {
+            "text": "Unit test paragraph text 1!"
+        }
+        response = self.client.post(self.uriParagraph, params)
+        self.assertEqual(response.status_code, 201,
+                         'Expected Response Code 201, received {0} instead.'
+                         .format(response.status_code))

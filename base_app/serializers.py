@@ -13,6 +13,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 class DevicesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Devices
+        # Exempel på hur alla fält kan väljas enkelt
         fields = '__all__'
 
 
