@@ -37,3 +37,4 @@ class ParagraphViewSet(viewsets.ModelViewSet):
 
     queryset = Paragraph.objects.all()
     serializer_class = ParagraphSerializer
+
