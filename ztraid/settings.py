@@ -63,7 +63,8 @@ ROOT_URLCONF = 'ztraid.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # TODO - ange sökväg för Templates på annat vis, det bör fungera genom angedda installed apps
+        'DIRS': [os.path.join(BASE_DIR, 'frontend')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
