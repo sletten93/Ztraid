@@ -38,6 +38,7 @@ REST_FRAMEWORK = {
 
 INSTALLED_APPS = [
     'base_app',
+    'frontend',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
