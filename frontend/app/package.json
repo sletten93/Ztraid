@@ -10,8 +10,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "webpack --mode development ./src/index.js --output ./project/frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./src/index.js --output ./project/frontend/static/frontend/main.js",
+    "dev": "webpack --mode development ./src/index.js --output ../static/frontend/main.js",
+    "build": "webpack --mode production ./src/index.js --output ../static/frontend/main.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -42,5 +42,10 @@
     "weak-key": "^1.0.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
-  }
+  },
+  "description": "- Download and install [node js](https://nodejs.org/en/download/)\r - Run `npx create-react-app app` to create a new react app.\r - Run `Git clone -b theAvokadoTest https://github.com/sletten93/Ztraid.git`\r - `cd app`\r - `npm start`",
+  "main": "webpack.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
