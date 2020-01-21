@@ -1,7 +1,12 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from base_app.serializers import ZtrUserSerializer, ProductSerializer, DevicesSerializer, UserPrefSerializer, FAQSerializer, ParagraphSerializer
 from .models import Product, Devices, ZtrUser, UserPref, FAQ, Paragraph
 
+
+class UsersAPIViewSet(generics.ListCreateAPIView): 
+
+    queryset = ZtrUser.objects.all()
+    serializer_class = ZtrUserSerializer
 
 class UsersViewSet(viewsets.ModelViewSet):
 
