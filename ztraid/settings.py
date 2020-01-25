@@ -29,6 +29,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# GOOGLE API - KEYS
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '950641117398-968a6107lkaer68tut6li7apc4ik15t2.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'gpuaTDDloYfBvkDpQUXmzhIK'
+
+# GOOGLE API - PATHS
+LOGIN_URL = '/auth/login/google-oauth2/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# GOOGLE API - ÖVRIGT
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
 # Rest Framework settings
 
 REST_FRAMEWORK = {
@@ -42,6 +54,7 @@ INSTALLED_APPS = [
     'base_app',
     'frontend',
     'rest_framework',
+    'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -110,6 +123,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
