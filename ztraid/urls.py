@@ -17,18 +17,18 @@ class Router(routers.DefaultRouter):
 
 
 router = Router()
-router.register(r'Users', views.UsersViewSet)
+router.register(r'users', views.UsersViewSet)
 router.register(r'FAQ', views.FAQViewSet)
-router.register(r'Paragraphs', views.ParagraphViewSet)
-router.register(r'Products', views.ProductViewSet)
-router.register(r'Devices', views.DevicesViewSet)
-router.register(r'UserPrefs', views.UserPrefViewSet)
+router.register(r'paragraphs', views.ParagraphViewSet)
+router.register(r'products', views.ProductViewSet)
+router.register(r'devices', views.DevicesViewSet)
+router.register(r'userPrefs', views.UserPrefViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('', include('frontend.urls')),
-    path('', include('base_app.urls')),
+    #    path('', include('base_app.urls')),
     path('', include('social_django.urls', namespace='social')),
     path('logout/', LogoutView.as_view(template_name=settings.LOGOUT_REDIRECT_URL), name='logout'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
