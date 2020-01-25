@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
-from django.shortcuts import render
-
 
 def index(request):
-    return render(request, 'app/public/index.html')
+    if request.user.is_authenticated:
+        return render(request, 'app/public/index.html')
+    else:
+        return render(request, 'app/public/not_auth.html')

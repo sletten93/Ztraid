@@ -3,6 +3,8 @@ from rest_framework import routers
 from django.urls import include
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.contrib.auth.views import LogoutView
 
 
 # Ändrar, vid körning, namn och beskrivning av API-förstasidan
@@ -24,8 +26,10 @@ router.register(r'UserPrefs', views.UserPrefViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include(router.urls)),
+    # path('', include(router.urls)),
     path('', include('frontend.urls')),
     path('', include('base_app.urls')),
+    path('', include('social_django.urls', namespace='social')),
+    path('logout/', LogoutView.as_view(template_name=settings.LOGOUT_REDIRECT_URL), name='logout'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
