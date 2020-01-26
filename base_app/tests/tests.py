@@ -4,8 +4,6 @@ from django.test import TestCase
 from rest_framework.test import APITestCase, force_authenticate, APIRequestFactory, APIClient
 from ..views import UsersViewSet, ProductViewSet, DevicesViewSet, UserPrefViewSet, FAQViewSet, ParagraphViewSet
 
-# TODO - hitta extern bibliotek för mocking?
-# TODO - hitta bra sätt att mocka DateTimeField för fält "created"
 
 
 class BaseAppTestCase(APITestCase):
