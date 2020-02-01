@@ -17,7 +17,7 @@ Django-modeller baserade på det första sambandsdiagrammet.
 class Product(models.Model):
 
     name = models.CharField(max_length=20)
-    cost = models.FloatField(max_length=10)
+    cost = models.FloatField(max_length=8)
 
     created = models.DateTimeField(auto_now_add=True)
 
@@ -27,12 +27,12 @@ class Product(models.Model):
 
 class Devices(models.Model):
 
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=25)
     OS = models.CharField(max_length=20)
     CPU = models.CharField(max_length=20)
     GPU = models.CharField(max_length=20)
-    cam = models.CharField(max_length=20)
-    mic = models.CharField(max_length=20)
+    cam = models.CharField(max_length=20, null=True, blank=True)
+    mic = models.CharField(max_length=20, null=True, blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
 
@@ -44,18 +44,18 @@ class Devices(models.Model):
 
 class ZtrUser(models.Model):
 
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=254)
     email = models.EmailField(max_length=254)
     role = models.CharField(max_length=1)
-    nickname = models.CharField(max_length=20)
-    phone = models.CharField(max_length=20)
+    nickname = models.CharField(max_length=30)
+    phone = models.CharField(max_length=20, null=True, blank=True)
     salt = models.CharField(max_length=25)
     password = models.CharField(max_length=20)
 
     created = models.DateTimeField(auto_now_add=True)
 
-    user_products = models.ManyToManyField(Product)
-    user_devices = models.ManyToManyField(Devices)
+    user_products = models.ManyToManyField(Product, blank=True)
+    user_devices = models.ManyToManyField(Devices, blank=True)
 
     def __str__(self):
         return "{} {}".format(self.name, self.nickname)
@@ -78,9 +78,9 @@ class UserPref(models.Model):
 
 class FAQ(models.Model):
 
-    question = models.CharField(max_length=255)
-    answer = models.CharField(max_length=8000)
-    example = models.CharField(max_length=8000)
+    question = models.CharField(max_length=500)
+    answer = models.CharField(max_length=5000)
+    example = models.CharField(max_length=5000, null=True, blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
 
