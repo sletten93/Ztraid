@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'base_app',
     'frontend',
     'rest_framework',
-    'social_django',<
+    'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
