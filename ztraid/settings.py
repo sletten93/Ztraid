@@ -51,16 +51,24 @@ REST_FRAMEWORK = {
 # Application definition
 
 INSTALLED_APPS = [
-    'base_app',
-    'frontend',
-    'rest_framework',
-    'social_django',
+
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    # Ordningen spelar roll, allauth bör ligga efter contrib-apparna och före våra egna
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    # 'social_django',
+    'rest_framework',
+    'base_app',
+    'frontend',
 ]
 
 MIDDLEWARE = [
@@ -124,9 +132,17 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
+    # 'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+AUTH_USER_MODEL = 'base_app.ZtrUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

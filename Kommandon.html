@@ -4,6 +4,27 @@ pip install Django
 
 pip install djangorestframework
 
+pip install social-auth-app-django
+
 manage.py migrate
 
 manage.py runserver
+
+superuser:
+AdminTemp
+TempWord1
+
+Kod??
+
+class UserManagement(APIView):
+
+    def get(self, request):
+        user = ZtrUser.objects.all()
+        serializer = ZtrUserSerializer(user, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        ZtrUser.objects.create(
+            username=request.POST.get('username'),
+            text=request.POST.get('text'))
+        return HttpResponse(status=201)

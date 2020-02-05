@@ -23,7 +23,21 @@ class ZtrUserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ZtrUser
-        fields = ['url', 'id', 'name', 'email', 'role', 'nickname', 'phone', 'created']
+        fields = ['url', 'id', 'username', 'email', 'password']
+        write_only_fields = ('password',)
+        read_only_fields = ('id',)
+
+        # TODO - kolla säkerhetsnivån på lösningen
+        def create(self, validated_data):
+            user = ZtrUser.objects.create(
+                username=validated_data['username'],
+                email=validated_data['email'],
+            )
+
+            user.set_password(validated_data['password'])
+            user.save()
+
+            return user
 
 
 class UserPrefSerializer(serializers.HyperlinkedModelSerializer):

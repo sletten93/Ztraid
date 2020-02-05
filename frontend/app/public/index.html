@@ -12,17 +12,17 @@
         <div id="app" class="columns"><!-- React --></div>
           YOU ARE LOGGED IN!<p id="test"></p>
       </div>
-        <div class="social-auth-status">
-            <h1>Google Login - status</h1>
-            {% if user.is_authenticated %}
-              <p>Logged as {{ user.username }}</p>
-              <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
-            {% else %}
-              <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
-                Login
-              </a>
-            {% endif %}
-        </div>
+        {% load socialaccount %}
+
+        <h1>Bunch of login stuff</h1>
+        {% if user.is_authenticated %}
+        <p>Hello {{ user.username }} =)</p>
+        <p><a href="{% url 'account_logout' %}">Log out</a>
+        {% else %}
+        <p><a href="{% url 'account_signup' %}">Sign Up</a></p>
+        <p><a href="{% url 'account_login' %}">Log In </a></p>
+        <p><a href="{% provider_login_url 'google' %}">Log In with Gmail</a></p>
+        {% endif %}
     </section>
     <section class="section">
         <div class = "API-box">

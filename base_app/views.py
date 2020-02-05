@@ -1,4 +1,8 @@
+from django.http import HttpResponse
+from requests import Response
 from rest_framework import viewsets, generics
+from rest_framework.views import APIView
+
 from base_app.serializers import ZtrUserSerializer, ProductSerializer, DevicesSerializer, UserPrefSerializer, FAQSerializer, ParagraphSerializer
 from .models import Product, Devices, ZtrUser, UserPref, FAQ, Paragraph
 
@@ -37,4 +41,3 @@ class ParagraphViewSet(viewsets.ModelViewSet):
 
     queryset = Paragraph.objects.all()
     serializer_class = ParagraphSerializer
-

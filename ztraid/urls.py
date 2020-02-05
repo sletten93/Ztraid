@@ -27,9 +27,11 @@ router.register(r'userPrefs', views.UserPrefViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/users/', include('django.contrib.auth.urls')),
     path('', include('frontend.urls')),
-    #    path('', include('base_app.urls')),
-    path('', include('social_django.urls', namespace='social')),
+    #   path('', include('base_app.urls')),
+    #   path('', include('social_django.urls', namespace='social')),
+    path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view(template_name=settings.LOGOUT_REDIRECT_URL), name='logout'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

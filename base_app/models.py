@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 """
@@ -46,9 +47,9 @@ class Devices(models.Model):
         return self.name
 
 
-class ZtrUser(models.Model):
+class ZtrUser(AbstractUser):
 
-    name = models.CharField(max_length=20)
+    #   name = models.CharField(max_length=20)
     email = models.EmailField(max_length=254)
     # TODO - Dokumentera tydligt vilka siffror som representerar vilka roller, eller byt till VarChar/CharField
     role = models.CharField(max_length=1)
@@ -63,7 +64,7 @@ class ZtrUser(models.Model):
     user_devices = models.ManyToManyField(Devices)
 
     def __str__(self):
-        return "{} {}".format(self.name, self.nickname)
+        return "{} {}".format(self.username, self.nickname)
 
     def get_role(self):
         return self.role
