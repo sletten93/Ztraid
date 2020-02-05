@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import Product, Devices, ZtrUser, UserPref, FAQ, Paragraph
 
 
-# TODO - avgöra om vi önskar använda hyperlinking, PKs eller något annat för att hantera entitets-relationer
 
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
@@ -19,7 +18,6 @@ class DevicesSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ZtrUserSerializer(serializers.HyperlinkedModelSerializer):
-    # url = serializers.HyperlinkedIdentityField(view_name="Ztraid:user-detail")
 
     class Meta:
         model = ZtrUser
